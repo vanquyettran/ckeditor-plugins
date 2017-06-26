@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cde8229-02e5-41aa-a394-1476b5922375" name="Default" comment="interna">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js" afterPath="$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js" />
     </list>
     <ignored path="ckeditor.iws" />
@@ -46,8 +47,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/samples/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+            <state relative-caret-position="400">
+              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -56,12 +57,22 @@
       <file leaf-file-name="internallink.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+            <state relative-caret-position="1000">
+              <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
               <folding>
-                <marker date="1498465710153" expanded="true" signature="10344:10356" ph="→" />
-                <marker date="1498465710153" expanded="true" signature="10394:10404" ph="..." />
+                <marker date="1498470469234" expanded="true" signature="11572:11584" ph="→" />
+                <marker date="1498470469234" expanded="true" signature="11622:11632" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ckeditor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ckeditor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="225" column="329" selection-start-line="225" selection-start-column="317" selection-end-line="225" selection-end-column="329" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -342,7 +353,7 @@
       <option name="presentableId" value="Default" />
       <updated>1498408900031</updated>
       <workItem from="1498408901153" duration="4301000" />
-      <workItem from="1498440688678" duration="19615000" />
+      <workItem from="1498440688678" duration="24480000" />
     </task>
     <task id="LOCAL-00001" summary="ckeditor">
       <created>1498453653393</created>
@@ -355,7 +366,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23916000" />
+    <option name="totallyTimeSpent" value="28781000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="754" extended-state="6" />
@@ -487,21 +498,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ckeditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="225" column="329" selection-start-line="225" selection-start-column="317" selection-end-line="225" selection-end-column="329" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/samples/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+        <state relative-caret-position="400">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+        <state relative-caret-position="1000">
+          <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
           <folding>
-            <marker date="1498465710153" expanded="true" signature="10344:10356" ph="→" />
-            <marker date="1498465710153" expanded="true" signature="10394:10404" ph="..." />
+            <marker date="1498470469234" expanded="true" signature="11572:11584" ph="→" />
+            <marker date="1498470469234" expanded="true" signature="11622:11632" ph="..." />
           </folding>
         </state>
       </provider>

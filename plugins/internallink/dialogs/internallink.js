@@ -65,12 +65,16 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
                         default: 'checked',
                         onClick: function() {
                             // this = CKEDITOR.ui.dialog.checkbox
+                            var elm = ckeContentElement( 'tab-basic', 'text' );
                             if (this.getValue()) {
-                                ckeInputElement( 'tab-basic', 'text' ).value = modelName;
+                                elm.setValue(modelName);
+                                elm.disable();
+                            } else {
+                                elm.enable();
                             }
                         },
                         setup: function( element ) {
-                            this.setValue( element.getAttribute('data-auto-text') );
+                            this.setValue( 'true' === element.getAttribute('data-auto-text') );
                         },
                         commit: function( element ) {
                             element.setAttribute('data-auto-text', this.getValue());
@@ -83,12 +87,16 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
                         default: 'checked',
                         onClick: function(element) {
                             // this = CKEDITOR.ui.dialog.checkbox
+                            var elm = ckeContentElement( 'tab-basic', 'title' );
                             if (this.getValue()) {
-                                ckeInputElement( 'tab-basic', 'title' ).value = modelName;
+                                elm.setValue(modelName);
+                                elm.disable();
+                            } else {
+                                elm.enable();
                             }
                         },
                         setup: function( element ) {
-                            this.setValue( element.getAttribute('data-auto-title') );
+                            this.setValue( 'true' === element.getAttribute('data-auto-title') );
                         },
                         commit: function( element ) {
                             element.setAttribute('data-auto-title', this.getValue());
@@ -134,10 +142,11 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
                         },
                         commit: function ( element ) {
                             var id = this.getValue();
-                            if ( id )
+                            if ( id ) {
                                 element.setAttribute( 'id', id );
-                            else if ( !this.insertMode )
+                            } else if ( !this.insertMode ) {
                                 element.removeAttribute( 'id' );
+                            }
                         }
                     },
                     {
@@ -149,15 +158,24 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
                         },
                         commit: function ( element ) {
                             var className = this.getValue();
-                            if ( className )
+                            if ( className ) {
                                 element.setAttribute( 'class', className );
-                            else if ( !this.insertMode )
+                            } else if ( !this.insertMode ) {
                                 element.removeAttribute( 'class' );
+                            }
                         }
                     }
                 ]
             }
         ],
+
+        // Act on tab switching
+        onLoad : function() {
+            // Act on tab switching
+            this.on('selectPage', function (event) {
+                // console.log('modelId: ' + modelId, 'modelName: ' + modelName, 'modelType: ' + modelType);
+            });
+        },
 
         onShow: function() {
 
@@ -187,12 +205,23 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
             select2(selector);
             if (this.insertMode) {
                 $(selector).select2('open');
+                modelId = null;
+                modelName = '';
+                modelType = '';
             } else {
                 modelId = element.getAttribute('data-model-id');
                 modelName = element.getAttribute('data-model-name');
+                modelType = element.getAttribute('data-model-type');
                 $(selector).empty()
                     .append('<option value="' + modelId + '">' + modelName + '</option>')
                     .val(modelId).trigger("change");
+            }
+
+            if (ckeContentElement('tab-basic', 'auto-title').getValue()) {
+                ckeContentElement('tab-basic', 'title').disable();
+            }
+            if (ckeContentElement('tab-basic', 'auto-text').getValue()) {
+                ckeContentElement('tab-basic', 'text').disable();
             }
         },
 
@@ -202,8 +231,9 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
 
             dialog.commitContent( internallink );
 
-            if ( dialog.insertMode )
+            if ( dialog.insertMode ) {
                 editor.insertElement( internallink );
+            }
         }
     };
 });
@@ -259,16 +289,18 @@ function select2(selector) {
 
     function formatRepoSelection (repo) {
         modelId = repo.id;
-        modelName = repo.name;
-        return repo.name || repo.text;
+        modelName = repo.name || repo.text;
+        return modelName;
     }
 
     $(selector).on("change", function (event) {
-        if (ckeInputElement('tab-basic', 'auto-text').checked) {
-            ckeInputElement('tab-basic', 'text').value = modelName;
+        if (ckeContentElement('tab-basic', 'auto-text').getValue()) {
+            ckeContentElement('tab-basic', 'text').disable();
+            ckeContentElement('tab-basic', 'text').setValue(modelName);
         }
-        if (ckeInputElement('tab-basic', 'auto-title').checked) {
-            ckeInputElement('tab-basic', 'title').value = modelName;
+        if (ckeContentElement('tab-basic', 'auto-title').getValue()) {
+            ckeContentElement('tab-basic', 'title').disable();
+            ckeContentElement('tab-basic', 'title').setValue(modelName);
         }
     });
 }
@@ -276,4 +308,7 @@ function select2(selector) {
 function ckeInputElement(tabId, elmId)
 {
     return CKEDITOR.dialog.getCurrent().getContentElement( tabId, elmId ).getInputElement().$;
+}
+function ckeContentElement(tabId, elmId) {
+    return CKEDITOR.dialog.getCurrent().getContentElement( tabId, elmId );
 }
