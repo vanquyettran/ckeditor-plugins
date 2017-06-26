@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cde8229-02e5-41aa-a394-1476b5922375" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="8cde8229-02e5-41aa-a394-1476b5922375" name="Default" comment="interna">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js" afterPath="$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js" />
     </list>
     <ignored path="ckeditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,11 +56,11 @@
       <file leaf-file-name="internallink.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="243" column="75" selection-start-line="243" selection-start-column="75" selection-end-line="243" selection-end-column="75" />
+            <state relative-caret-position="557">
+              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
               <folding>
-                <marker date="1498453626808" expanded="true" signature="9588:9600" ph="→" />
-                <marker date="1498453626808" expanded="true" signature="9638:9648" ph="..." />
+                <marker date="1498465710153" expanded="true" signature="10344:10356" ph="→" />
+                <marker date="1498465710153" expanded="true" signature="10394:10404" ph="..." />
               </folding>
             </state>
           </provider>
@@ -342,7 +342,7 @@
       <option name="presentableId" value="Default" />
       <updated>1498408900031</updated>
       <workItem from="1498408901153" duration="4301000" />
-      <workItem from="1498440688678" duration="12897000" />
+      <workItem from="1498440688678" duration="19615000" />
     </task>
     <task id="LOCAL-00001" summary="ckeditor">
       <created>1498453653393</created>
@@ -355,7 +355,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17198000" />
+    <option name="totallyTimeSpent" value="23916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="754" extended-state="6" />
@@ -497,11 +497,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="243" column="75" selection-start-line="243" selection-start-column="75" selection-end-line="243" selection-end-column="75" />
+        <state relative-caret-position="557">
+          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
           <folding>
-            <marker date="1498453626808" expanded="true" signature="9588:9600" ph="→" />
-            <marker date="1498453626808" expanded="true" signature="9638:9648" ph="..." />
+            <marker date="1498465710153" expanded="true" signature="10344:10356" ph="→" />
+            <marker date="1498465710153" expanded="true" signature="10394:10404" ph="..." />
           </folding>
         </state>
       </provider>

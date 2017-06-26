@@ -1,4 +1,10 @@
-var repoName = '';
+
+var modelId = null;
+
+var modelName = '';
+
+var modelType = '';
+
 CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
     return {
         // ... The dialog definition comes here ...
@@ -14,60 +20,78 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
                     // UI elements of the first tab will be defined here.
                     {
                         type: 'select',
-                        id: 'href',
-                        label: 'Href',
-                        items: [],
-                        validate: CKEDITOR.dialog.validate.notEmpty( "Href field cannot be empty." ),
+                        id: 'model-type',
+                        label: 'Model Class',
+                        items: [
+                            ['Article', 'Article'],
+                            ['Article Category', 'ArticleCategory']
+                        ],
+                        default: 'Article',
+                        validate: CKEDITOR.dialog.validate.notEmpty( "Model Type field cannot be empty." ),
+                        onChange: function ( element ) {
+                            modelType = this.getValue();
+                            modelId = null;
+                            modelName = '';
+                            $('#' + ckeInputElement('tab-basic', 'model').id).empty();
+                            ckeInputElement('tab-basic', 'text').value = '';
+                            ckeInputElement('tab-basic', 'title').value = '';
+                        },
                         setup: function( element ) {
-                            this.setValue( element.getAttribute( "data-href" ) );
+                            this.setValue( element.getAttribute( "data-model-type" ) );
                         },
                         commit: function( element ) {
-                            element.setAttribute( "data-href", this.getValue() );
-                            // element.repoName = this.getValue();
-                            var input = this.getInputElement().$;
-                            element.repoName = input.repoName;
-                            // element.setAttribute( "data-name", input.options[ input.selectedIndex ].value );
-                            element.setAttribute( "data-name", input.repoName );
+                            element.setAttribute( "data-model-type", this.getValue() );
+                        }
+                    },
+                    {
+                        type: 'select',
+                        id: 'model',
+                        label: 'Model',
+                        items: [],
+                        validate: CKEDITOR.dialog.validate.notEmpty( "Model field cannot be empty." ),
+                        setup: function( element ) {
+                            this.setValue( element.getAttribute( "data-model-id" ) );
+                        },
+                        commit: function( element ) {
+                            // var input = this.getInputElement().$;
+                            element.setAttribute( "data-model-id", modelId );
+                            element.setAttribute( "data-model-name", modelName );
                         }
                     },
                     {
                         type: 'checkbox',
-                        id: 'textbyname',
-                        label: 'Text by Name',
-                        'default': 'checked',
+                        id: 'auto-text',
+                        label: 'Auto Text',
+                        default: 'checked',
                         onClick: function() {
                             // this = CKEDITOR.ui.dialog.checkbox
-                            // alert( 'Checked: ' + this.getValue() );
                             if (this.getValue()) {
-                                console.log(CKEDITOR.dialog.getCurrent().getContentElement( 'tab-basic', 'text' ).getInputElement().$);
-                                CKEDITOR.dialog.getCurrent().getContentElement( 'tab-basic', 'text' ).getInputElement().$.value = repoName;
+                                ckeInputElement( 'tab-basic', 'text' ).value = modelName;
                             }
                         },
                         setup: function( element ) {
-                            this.setValue( element.getAttribute('data-textbyname') );
+                            this.setValue( element.getAttribute('data-auto-text') );
                         },
                         commit: function( element ) {
-                            element.setAttribute('data-textbyname', this.getValue());
+                            element.setAttribute('data-auto-text', this.getValue());
                         }
                     },
                     {
                         type: 'checkbox',
-                        id: 'titlebyname',
-                        label: 'Title by Name',
-                        'default': 'checked',
+                        id: 'auto-title',
+                        label: 'Auto Title',
+                        default: 'checked',
                         onClick: function(element) {
                             // this = CKEDITOR.ui.dialog.checkbox
-                            // alert( 'Checked: ' + this.getValue() );
                             if (this.getValue()) {
-                                console.log(CKEDITOR.dialog.getCurrent().getContentElement( 'tab-basic', 'title' ).getInputElement().$);
-                                CKEDITOR.dialog.getCurrent().getContentElement( 'tab-basic', 'title' ).getInputElement().$.value = repoName;
+                                ckeInputElement( 'tab-basic', 'title' ).value = modelName;
                             }
                         },
                         setup: function( element ) {
-                            this.setValue( element.getAttribute('data-titlebyname') );
+                            this.setValue( element.getAttribute('data-auto-title') );
                         },
                         commit: function( element ) {
-                            element.setAttribute('data-titlebyname', this.getValue());
+                            element.setAttribute('data-auto-title', this.getValue());
                         }
                     },
                     {
@@ -94,8 +118,6 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
                             element.setAttribute( "title", this.getValue());
                         }
                     }
-
-
                 ]
             },
             {
@@ -143,34 +165,35 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
             var selection = editor.getSelection();
             var element = selection.getStartElement();
 
-            if ( element )
+            if ( element ) {
                 element = element.getAscendant( 'a', true );
+            }
 
             if ( !element || element.getName() != 'a' ) {
                 element = editor.document.createElement( 'a' );
                 this.insertMode = true;
-            }
-            else
-                this.insertMode = false;
-
-            // Select2
-            var selector = 'select.cke_dialog_ui_input_select';
-
-            select2(selector);
-
-            if (this.insertMode) {
-                $(selector).select2('open');
             } else {
-                $(selector).empty()
-                    .append('<option>' + element.getAttribute('data-href') + '</option>')
-                    .val(element.getAttribute('data-href'))
-                    .trigger("change");
+                this.insertMode = false;
             }
 
             this.element = element;
 
-            if ( !this.insertMode )
+            if ( !this.insertMode ) {
                 this.setupContent( element );
+            }
+
+            // Select2
+            var selector = '#' + ckeInputElement('tab-basic', 'model').id;
+            select2(selector);
+            if (this.insertMode) {
+                $(selector).select2('open');
+            } else {
+                modelId = element.getAttribute('data-model-id');
+                modelName = element.getAttribute('data-model-name');
+                $(selector).empty()
+                    .append('<option value="' + modelId + '">' + modelName + '</option>')
+                    .val(modelId).trigger("change");
+            }
         },
 
         onOk: function() {
@@ -188,13 +211,14 @@ CKEDITOR.dialog.add( 'internallinkDialog', function ( editor ) {
 function select2(selector) {
     $(selector).select2({
         ajax: {
-            url: "http://localhost/tiengtrunganhduong.com/test/search-articles",
+            url: "http://localhost/tiengtrunganhduong.com/test/search-models",
             dataType: 'json',
             delay: 250,
             data: function (params) {
                 return {
                     q: params.term, // search term
-                    page: params.page
+                    page: params.page,
+                    type: modelType
                 };
             },
             processResults: function (data, params) {
@@ -228,19 +252,28 @@ function select2(selector) {
             ' <img src="' + repo.image_src + '" width="50px">' +
             ' <strong>' + repo.name + '</strong>' +
             ' <span>&rightarrow;</span>' +
-            ' <span style="color:#f98">' + repo.id + '</span>' +
+            ' <span style="color:#f98">' + repo.url + '</span>' +
             '</div>'
         );
     }
 
     function formatRepoSelection (repo) {
-        repoName = repo.name;
-        return repo.id || repo.text;
+        modelId = repo.id;
+        modelName = repo.name;
+        return repo.name || repo.text;
     }
 
     $(selector).on("change", function (event) {
-        this.repoName = repoName;
-        CKEDITOR.dialog.getCurrent().getContentElement( 'tab-basic', 'text' ).getInputElement().$.value = repoName;
-        CKEDITOR.dialog.getCurrent().getContentElement( 'tab-basic', 'title' ).getInputElement().$.value = repoName;
+        if (ckeInputElement('tab-basic', 'auto-text').checked) {
+            ckeInputElement('tab-basic', 'text').value = modelName;
+        }
+        if (ckeInputElement('tab-basic', 'auto-title').checked) {
+            ckeInputElement('tab-basic', 'title').value = modelName;
+        }
     });
+}
+
+function ckeInputElement(tabId, elmId)
+{
+    return CKEDITOR.dialog.getCurrent().getContentElement( tabId, elmId ).getInputElement().$;
 }
