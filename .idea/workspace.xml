@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cde8229-02e5-41aa-a394-1476b5922375" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/internallink/icons/internallink.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/internallink/dialogs/internallink.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/internallink/plugin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ckeditor.iml" afterPath="$PROJECT_DIR$/.idea/ckeditor.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/index.html" afterPath="$PROJECT_DIR$/samples/index.html" />
     </list>
     <ignored path="ckeditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -350,12 +342,20 @@
       <option name="presentableId" value="Default" />
       <updated>1498408900031</updated>
       <workItem from="1498408901153" duration="4301000" />
-      <workItem from="1498440688678" duration="12871000" />
+      <workItem from="1498440688678" duration="12897000" />
     </task>
+    <task id="LOCAL-00001" summary="ckeditor">
+      <created>1498453653393</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1498453653393</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17172000" />
+    <option name="totallyTimeSpent" value="17198000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="754" extended-state="6" />
@@ -390,6 +390,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ckeditor" />
+    <option name="LAST_COMMIT_MESSAGE" value="ckeditor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
