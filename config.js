@@ -10,6 +10,6 @@ CKEDITOR.editorConfig = function( config ) {
 
     // http://docs.ckeditor.com/#!/guide/plugin_sdk_sample_1
     // http://docs.ckeditor.com/#!/guide/plugin_sdk_sample_2
-    config.extraPlugins = 'abbr';
+    config.extraPlugins = 'internallink';
     config.allowedContent = true;
 };

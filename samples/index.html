@@ -11,6 +11,29 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	<script src="js/sample.js"></script>
 	<link rel="stylesheet" href="css/samples.css">
 	<link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet">
+	<style>
+		.cke_reset_all .cke_dialog_ui_input_select {
+			width: 100%;
+		}
+		.cke_reset_all .select2-selection {
+			position: relative;
+		}
+		.select2-dropdown {
+			z-index: 999999999;
+			font-size: 12px;
+		}
+		.select2-option-row {
+			overflow: hidden;
+		}
+		.select2-option-row * {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	</style>
 </head>
 <body id="main">
 
